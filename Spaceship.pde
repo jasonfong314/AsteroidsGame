@@ -1,19 +1,31 @@
-class Spaceship extends Floater  
-{  
-    public Spaceship(){
-      corners = 4;
-      xCorners = new int[]{-8,16,-8,-2};
-      yCorners = new int []{-8,0,8,0};
-      myColor = color(255);
-      myCenterX = myCenterY = 250;
-      myXspeed = 3;
-      myYspeed = 3;
-      myPointDirection = 0;
-    }
-    public void Hyperspace(){
-      myPointDirection = (int)(Math.random()*361);
-      myCenterX =(int)(Math.random()*501);
-      myCenterY =(int)(Math.random()*501);
-      myXspeed = myYspeed = 0;
-    }
+Spaceship bob = new Spaceship();
+Star[] stars = new Star[500];
+public void setup()
+{
+  size(500,500);
+  for(int i  = 0; i < stars.length; i++)
+    stars[i] = new Star();
+}
+public void draw()
+{
+  background(0);
+  bob.show();
+  bob.move();
+  for(int i  = 0; i < stars.length; i++)
+    stars[i].show();
+}
+
+public void keyPressed(){
+  if(key == 'a'){
+    bob.turn(-10);
+  }
+  if(key == 'd'){
+    bob.turn(10);
+  }
+  if(key=='h'){
+    bob.Hyperspace();
+  }
+  if(key == 'w'){
+    bob.accelerate(.5);
+  }
 }

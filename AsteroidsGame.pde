@@ -45,4 +45,3 @@ public void keyPressed(){
     bob.accelerate(.5);
   }
 }
-
